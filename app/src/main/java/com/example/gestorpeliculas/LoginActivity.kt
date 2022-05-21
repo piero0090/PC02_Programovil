@@ -21,7 +21,6 @@ class LoginActivity : Activity(){
         btnLogin?.setOnClickListener{v:View->
             val intent: Intent= Intent()
             intent.setClass(this, MainActivity::class.java)
-
             startActivity(intent)
         }
     }
