@@ -31,6 +31,7 @@ class ListadoPeliculasAdapter(private val mListaPeliculas : List<Pelicula>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pelicula = mListaPeliculas[position]
         holder.itemPeliculaNombre.text = pelicula.nombre
+        holder.itemPeliculaHora.text = pelicula.hora
 
     }
 
