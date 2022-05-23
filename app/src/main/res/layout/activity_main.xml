@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:id="@+id/drawermain">
 
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,17 +22,9 @@
             android:background="#AA99FF"
             />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center|start|fill"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:typeface="monospace" />
-
-
     </LinearLayout>
+-->
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvsecciones"
@@ -48,14 +41,7 @@
         android:layout_gravity = "start"
         android:fitsSystemWindows="true"/>
 
-    <TextView
-        android:id="@+id/PRUEBATXT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

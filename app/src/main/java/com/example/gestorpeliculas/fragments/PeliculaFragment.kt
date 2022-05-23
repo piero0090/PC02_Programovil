@@ -1,17 +1,17 @@
-package com.example.gestorpeliculas.Fragments
+package com.example.gestorpeliculas.fragments
 
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gestorpeliculas.Adapters.Listado_Peliculas
+import com.example.gestorpeliculas.adapters.ListadoPeliculasAdapter
 import com.example.gestorpeliculas.R
 import com.example.gestorpeliculas.models.GestorPeliculas
 import com.example.gestorpeliculas.models.beans.Pelicula
 
 class PeliculaFragment : Fragment() {
-    private lateinit var mRviPeliculas : RecyclerView
+    private lateinit var InfoPeliculas : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.title = "Peliculas"
@@ -22,7 +22,7 @@ class PeliculaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cartelera, container, false)
+        return inflater.inflate(R.layout.fragment_pelicula, container, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -32,13 +32,13 @@ class PeliculaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mRviPeliculas = view.findViewById(R.id.rviPeliculas)
+        InfoPeliculas = view.findViewById(R.id.fragPeliculaInfo)
 
         val listaPeliculas : List<Pelicula> = GestorPeliculas().obtenerListaPeliculas()
-        val adapter = Listado_Peliculas(listaPeliculas) {
-            Log.i("fragment","Se hizo click en el planeta " + it.nombre);
+        val adapter = ListadoPeliculasAdapter(listaPeliculas) {
+            Log.i("PeliculaFragment","Se hizo click en la pelicula" + it.nombre);
         }
-        mRviPlanetas.adapter = adapter
+        InfoPeliculas.adapter = adapter
 
     }
 }

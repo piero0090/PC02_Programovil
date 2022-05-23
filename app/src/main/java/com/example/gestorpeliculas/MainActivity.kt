@@ -2,20 +2,24 @@ package com.example.gestorpeliculas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
-import com.example.gestorpeliculas.Fragments.AboutFragment
-import com.example.gestorpeliculas.Fragments.CarteleraFragment
-import com.google.android.material.internal.NavigationMenu
+import com.example.gestorpeliculas.adapters.ListadoPeliculasAdapter
+import com.example.gestorpeliculas.fragments.AboutFragment
+import com.example.gestorpeliculas.fragments.CarteleraFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawermain: DrawerLayout
     private lateinit var navMenu : NavigationView
+    private lateinit var tviUsername : TextView
+    private lateinit var tviUsername2 : TextView
+
+
 
     //definicion de fragments
     private val fragmentAbout = AboutFragment()
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         drawermain= findViewById(R.id.drawermain)
         navMenu = findViewById(R.id.navMenu)
-        val header = findViewById<TextView>(R.id.edTxt)
+        //val header = findViewById<TextView>(R.id.edTxt)
 
 
         navMenu.setNavigationItemSelectedListener {
@@ -41,20 +45,21 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        //fragment x defecto
-        /*val f= supportFragmentManager.beginTransaction()
-        f.add(R.id.fcvsecciones, fragmentAbout)
-        f.commit()*/
-
         val nombre = intent.getStringExtra("USERNAME")
-        val tviUsername = findViewById<TextView>(R.id.PRUEBATXT)
-        Log.i("MainActivity", "hola "+ nombre+ " "+  tviUsername.text.toString())
-        tviUsername.setText("Hola, " + nombre)
-        Log.i("MainActivity", "hola "+ nombre+ " "+  tviUsername.text.toString())
+        tviUsername = navMenu.getHeaderView(0).findViewById(R.id.hNombre)
+        tviUsername.setText(nombre)
+
+
+
+
+        //fragment x defecto
+        val f= supportFragmentManager.beginTransaction()
+        f.add(R.id.fcvsecciones, fragmentCartelera)
+
+        f.commit()
+
 
     }
-
-
 
     //Funciones para mostrar fragments
     private fun MostrarFragmentAbout(f: FragmentTransaction) {
@@ -70,4 +75,6 @@ class MainActivity : AppCompatActivity() {
         f.commit()
         //f.replace(R.id.fcvsecciones, fragmentCartelera)
     }
+
+
 }
